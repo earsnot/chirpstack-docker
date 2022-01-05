@@ -34,11 +34,14 @@ services:
     volumes:
       - ./configuration/postgresql/initdb:/docker-entrypoint-initdb.d
       - postgresqldata:/var/lib/postgresql/data
-
+    ports:
+      - 5432:5432
   redis:
     image: redis:5-alpine
     volumes:
       - redisdata:/data
+    ports:
+      - 6379:6379
 
   mosquitto:
     image: eclipse-mosquitto:2
@@ -46,7 +49,8 @@ services:
       - 1883:1883
     volumes: 
       - ./configuration/eclipse-mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
-
+  php-apache:
+    image: php-apache:
 volumes:
   postgresqldata:
   redisdata:
