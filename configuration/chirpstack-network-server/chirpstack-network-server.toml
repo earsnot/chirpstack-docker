@@ -75,13 +75,13 @@ name="EU868"
 # 0: RX1 / RX2
 # 1: RX1 only
 # 2: RX2 only
-rx_window=1
-rx1_delay=5
+rx_window=2
+rx1_delay=3
 #rx2_dr=0
 #rx2_frequency=869525000
 downlink_tx_power=14
 
-disable_adr=true
+disable_adr=false
 
 
 # Extra channel configuration.
