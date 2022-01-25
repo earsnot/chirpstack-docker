@@ -21,6 +21,7 @@ services:
       - ./configuration/chirpstack-application-server:/etc/chirpstack-application-server
     depends_on:
       - chirpstack-network-server
+    restart: "unless-stopped"
 
   chirpstack-gateway-bridge:
     image: chirpstack/chirpstack-gateway-bridge:3
@@ -30,6 +31,7 @@ services:
       - ./configuration/chirpstack-gateway-bridge:/etc/chirpstack-gateway-bridge
     depends_on: 
       - mosquitto
+    restart: "unless-stopped"
 
   postgresql:
     image: postgres:9.6-alpine
@@ -40,21 +42,27 @@ services:
       - postgresqldata:/var/lib/postgresql/data
     ports:
       - 5432:5432
+    restart: "unless-stopped"
+
   redis:
     image: redis:5-alpine
     volumes:
       - redisdata:/data
     ports:
       - 6379:6379
+    restart: "unless-stopped"
+
   adminer:
     image: adminer
     restart: "unless-stopped"
     ports:
      - 8080:8080
+  
   mosquitto:
     image: eclipse-mosquitto:2
     ports:
       - 1883:1883
+    restart: "unless-stopped"
     volumes: 
       - ./configuration/eclipse-mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
 volumes:
