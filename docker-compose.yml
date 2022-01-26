@@ -4,7 +4,7 @@ services:
   chirpstack-network-server:
     image: earsnots/chirpstack-network-server-edit:latest
     ports:
-      - 80:80
+      - 80
     volumes:
       - ./configuration/php-apache/sites-available/:/etc/apache2/sites-available/
       - ./configuration/chirpstack-network-server:/etc/chirpstack-network-server
@@ -42,6 +42,13 @@ services:
       - postgresqldata:/var/lib/postgresql/data
     ports:
       - 5432:5432
+    restart: "unless-stopped"
+    
+  nginx:
+    build: ./configuration/nginx/
+    ports:
+      - 80:80
+      - 443:443
     restart: "unless-stopped"
 
   redis:
