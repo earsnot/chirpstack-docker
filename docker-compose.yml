@@ -14,7 +14,7 @@ services:
     restart: "unless-stopped"
 
   chirpstack-application-server:
-    image: chirpstack/chirpstack-application-server:3
+    image: chirpstack/chirpstack-application-server:3.17.4
     ports:
       - 8081
     volumes:
@@ -24,7 +24,7 @@ services:
     restart: "unless-stopped"
 
   chirpstack-gateway-bridge:
-    image: chirpstack/chirpstack-gateway-bridge:3
+    image: chirpstack/chirpstack-gateway-bridge:3.13.2
     ports:
       - 1700:1700/udp
     volumes:
@@ -60,7 +60,7 @@ services:
     restart: "unless-stopped"
 
   adminer:
-    image: adminer
+    image: adminer:4.8.1
     restart: "unless-stopped"
     ports:
      - 8080
