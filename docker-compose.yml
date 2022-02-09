@@ -52,7 +52,7 @@ services:
     restart: "unless-stopped"
 
   redis:
-    image: redis:5-alpine
+    image: redis:5.0-alpine
     volumes:
       - redisdata:/data
     ports:
